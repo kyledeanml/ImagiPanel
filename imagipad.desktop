@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=ImagiPad
+Comment=Retina image, vector, & video viewer with Ctrl+Wheel zooming, GStreamer video playback, and folder navigation
+GenericName=Image, Vector, & Video Viewer
+Exec=run.sh %F
+Icon=imagipad
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;Graphics;AudioVideo;Video;Player;Viewer;RasterGraphics;VectorGraphics;2DGraphics;Photography;
+MimeType=image/svg+xml;image/svg+xml-compressed;image/png;image/jpeg;image/jpg;image/pjpeg;image/gif;image/webp;image/bmp;image/x-bmp;image/x-MS-bmp;image/tiff;image/x-ico;image/x-icon;image/vnd.microsoft.icon;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-xpixmap;image/x-xbitmap;image/avif;image/heif;image/heic;image/x-tga;image/x-icns;video/mp4;video/x-m4v;video/x-matroska;video/webm;video/x-msvideo;video/quicktime;video/x-flv;video/x-ms-wmv;video/mpeg;video/ogg;video/mp2t;video/3gpp;video/3gpp2;
+StartupNotify=true
+StartupWMClass=imagipad
+Keywords=image;video;photo;picture;movie;player;viewer;svg;gif;jpeg;jpg;png;webp;mp4;mkv;webm;avi;mov;imagipad;retina;
+Actions=NewWindow;
+
+[Desktop Action NewWindow]
+Name=Open a New Window
+Exec=run.sh
