@@ -88,6 +88,7 @@ class MediaCanvas(Gtk.Box):
         self.rotation_angle = 0  # 0, 90, 180, 270
         self.flipped_h = False
         self.flipped_v = False
+        self._last_scroll_zoom_time = 0
 
         # Panning state
         self._dragging = False
@@ -763,21 +764,43 @@ class MediaCanvas(Gtk.Box):
     # Mouse Wheel Zoom & Drag Panning
     # --------------------------------------------------------------------------
     def _on_scroll_event(self, widget, event):
-        if event.state & Gdk.ModifierType.CONTROL_MASK:
-            if event.direction == Gdk.ScrollDirection.UP:
-                self.zoom_in()
-                return True
-            elif event.direction == Gdk.ScrollDirection.DOWN:
-                self.zoom_out()
-                return True
-            elif event.direction == Gdk.ScrollDirection.SMOOTH:
-                _, dy = event.get_scroll_deltas()
-                if dy < -0.01:
+        state = getattr(event, "state", 0)
+        if not state and hasattr(event, "get_state"):
+            ok, st = event.get_state()
+            if ok:
+                state = st
+        if state & Gdk.ModifierType.CONTROL_MASK:
+            ev_time = getattr(event, "time", 0)
+            direction = getattr(event, "direction", None)
+            if direction is None and hasattr(event, "get_scroll_direction"):
+                ok_d, d = event.get_scroll_direction()
+                if ok_d:
+                    direction = d
+
+            if direction == Gdk.ScrollDirection.UP:
+                if not ev_time or ev_time != self._last_scroll_zoom_time:
+                    self._last_scroll_zoom_time = ev_time
                     self.zoom_in()
+                return True
+            elif direction == Gdk.ScrollDirection.DOWN:
+                if not ev_time or ev_time != self._last_scroll_zoom_time:
+                    self._last_scroll_zoom_time = ev_time
+                    self.zoom_out()
+                return True
+            elif direction == Gdk.ScrollDirection.SMOOTH:
+                res = event.get_scroll_deltas() if hasattr(event, "get_scroll_deltas") else ()
+                dy = res[-1] if res else getattr(event, "delta_y", 0.0)
+                if dy < -0.01:
+                    if not ev_time or ev_time != self._last_scroll_zoom_time:
+                        self._last_scroll_zoom_time = ev_time
+                        self.zoom_in()
                     return True
                 elif dy > 0.01:
-                    self.zoom_out()
+                    if not ev_time or ev_time != self._last_scroll_zoom_time:
+                        self._last_scroll_zoom_time = ev_time
+                        self.zoom_out()
                     return True
+                return True
         return False
 
     def _on_button_press(self, widget, event):
