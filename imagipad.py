@@ -714,7 +714,7 @@ class ImagiPadWindow(Gtk.ApplicationWindow):
         dialog.set_program_name(self.APP_NAME)
         dialog.set_version(self.APP_VERSION)
         dialog.set_comments(
-            "Retina Image, Vector, & Video Viewer Companion for PythonPad and DocPad.\n"
+            "Retina Image, Vector, & Video Viewer Companion for PythonPad and DocuPad.\n"
             "Supports SVG, PNG, JPEG, Animated GIF, WebP, BMP, TIFF, ICO, MP4, MKV, WebM, AVI, MOV, and more."
         )
         icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "imagipad.svg")
