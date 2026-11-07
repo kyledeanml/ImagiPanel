@@ -31,7 +31,7 @@ except Exception:
 class MediaCanvas(Gtk.Box):
     """
     Retina-optimized image, vector, and video canvas widget with:
-    - Translucent ImagiPad watermark (darker-blue cinema/picture frame & play lens on a yoga pad)
+    - Translucent ImagiPad watermark (darker-blue open human profile with wispy lines on a yoga pad)
     - Ctrl + Mouse Wheel smooth zooming (10% to 800%)
     - Fit-to-Window & 1:1 Actual Pixels modes
     - Click-and-drag panning

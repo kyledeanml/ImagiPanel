@@ -4,7 +4,7 @@
   <img src="imagipad.svg" alt="ImagiPad Logo" width="160" height="160">
 </p>
 
-A fast, modern **Image, Vector, & Video Viewer Companion Application** with **Retina Vision** (HiDPI dynamic scaling from 10% to 800%), **Ctrl + Mouse Wheel Smooth Zooming**, **Native GStreamer Video Playback**, **Animated GIF Playback**, **Crisp SVG Vector Scaling**, **Folder Gallery Navigation**, and a translucent darker-blue cinema/picture frame and video play aperture watermark resting on an unassuming yoga pad. Built natively for **Linux Mint Cinnamon** using Python 3, GTK 3, GStreamer 1.0, Cairo, and GdkPixbuf to replace Pix, Xviewer, and standalone video players.
+A fast, modern **Image, Vector, & Video Viewer Companion Application** with **Retina Vision** (HiDPI dynamic scaling from 10% to 800%), **Ctrl + Mouse Wheel Smooth Zooming**, **Native GStreamer Video Playback**, **Animated GIF Playback**, **Crisp SVG Vector Scaling**, **Folder Gallery Navigation**, and a translucent darker-blue open human profile with wispy imagination lines rising from the top skull resting on an unassuming yoga pad. Built natively for **Linux Mint Cinnamon** using Python 3, GTK 3, GStreamer 1.0, Cairo, and GdkPixbuf to replace Pix, Xviewer, and standalone video players.
 
 ---
 
