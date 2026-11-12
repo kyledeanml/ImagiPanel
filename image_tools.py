@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ImagiPad - Image, Vector, & Video Metadata and Folder Gallery Tools
+ImagiPanel - Image, Vector, & Video Metadata and Folder Gallery Tools
 Provides directory sibling discovery across both images and videos,
 human-readable file metrics, and GdkPixbuf / GStreamer format inspection.
 """
@@ -67,7 +67,7 @@ class MediaMetadata:
 
 
 class MediaTools:
-    """Directory scanning, format detection, and metadata extraction for ImagiPad."""
+    """Directory scanning, format detection, and metadata extraction for ImagiPanel."""
 
     IMAGE_EXTENSIONS = {
         ".svg", ".svgz",

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-ImagiPad - Image, Vector, & Video Viewer Companion Application
+ImagiPanel - Image, Vector, & Video Viewer Companion Application
 With Retina Vision, Dark Neon Blue Theme, Ctrl + Mouse Wheel Smooth Zooming,
 Native GStreamer Video Player (MP4, MKV, WebM, AVI, MOV, FLV, WMV, MPEG, OGV),
 Animated GIF Playback, Crisp SVG Vector Scaling, Folder Gallery Navigation,
-and Translucent ImagiPad Yoga-Pad Watermark.
+and Translucent ImagiPanel Yoga-Pad Watermark.
 Designed for Linux Mint Cinnamon to replace Pix, Xviewer, and Celluloid.
 """
 
@@ -24,10 +24,10 @@ from canvas import MediaCanvas
 from image_tools import MediaTools
 
 
-class ImagiPadWindow(Gtk.ApplicationWindow):
-    """Main application window for ImagiPad."""
+class ImagiPanelWindow(Gtk.ApplicationWindow):
+    """Main application window for ImagiPanel."""
 
-    APP_NAME = "ImagiPad"
+    APP_NAME = "ImagiPanel"
     APP_VERSION = "2.1"
 
     def __init__(self, app, initial_files=None):
@@ -41,8 +41,8 @@ class ImagiPadWindow(Gtk.ApplicationWindow):
         self.slideshow_timer_id = None
 
         # Set application & window icon for Cinnamon panel, alt-tab, and taskbar
-        self.set_wmclass("imagipad", "ImagiPad")
-        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "imagipad.svg")
+        self.set_wmclass("imagipanel", "ImagiPanel")
+        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "imagipanel.svg")
         if os.path.exists(icon_path):
             try:
                 Gtk.Window.set_default_icon_from_file(icon_path)
@@ -81,7 +81,7 @@ class ImagiPadWindow(Gtk.ApplicationWindow):
         self.info_sidebar.set_visible(False)
 
     def _apply_dark_neon_theme(self):
-        """Apply sleek dark mode CSS with white text and neon blue accents across ImagiPad."""
+        """Apply sleek dark mode CSS with white text and neon blue accents across ImagiPanel."""
         css = b"""
         window, dialog, .background {
             background-color: #0b0f19;
@@ -270,7 +270,7 @@ class ImagiPadWindow(Gtk.ApplicationWindow):
         # Right Controls: Menu, Info Sidebar Toggle, Fit / 1:1 / Retina Zoom
         btn_menu = Gtk.MenuButton()
         btn_menu.set_image(Gtk.Image.new_from_icon_name("open-menu-symbolic", Gtk.IconSize.BUTTON))
-        btn_menu.set_tooltip_text("ImagiPad Options & Tools")
+        btn_menu.set_tooltip_text("ImagiPanel Options & Tools")
         btn_menu.set_popover(self._build_menu_popover(btn_menu))
         hb.pack_end(btn_menu)
 
@@ -324,8 +324,8 @@ class ImagiPadWindow(Gtk.ApplicationWindow):
             ("Toggle Fullscreen Mode (F11)", lambda: self.toggle_fullscreen()),
             ("Toggle Slideshow (F5)", lambda: self.toggle_slideshow()),
             ("Toggle Transparency Checkerboard (B)", lambda: self.toggle_checkerboard()),
-            ("Inspect SVG Source in PythonPad...", lambda: self.on_open_in_pythonpad()),
-            ("About ImagiPad", lambda: self.on_about()),
+            ("Inspect SVG Source in PythonPanel...", lambda: self.on_open_in_pythonpanel()),
+            ("About ImagiPanel", lambda: self.on_about()),
         ]
         for label_text, cb in items:
             btn = Gtk.ModelButton(label=label_text)
@@ -589,7 +589,7 @@ class ImagiPadWindow(Gtk.ApplicationWindow):
     # --------------------------------------------------------------------------
     def on_open(self):
         dialog = Gtk.FileChooserDialog(
-            title="Open Image or Video in ImagiPad",
+            title="Open Image or Video in ImagiPanel",
             parent=self,
             action=Gtk.FileChooserAction.OPEN
         )
@@ -696,9 +696,9 @@ class ImagiPadWindow(Gtk.ApplicationWindow):
         self.navigate_folder(1)
         return True
 
-    def on_open_in_pythonpad(self):
+    def on_open_in_pythonpanel(self):
         canvas = self.get_current_canvas()
-        cmd = ["pythonpad"]
+        cmd = ["pythonpanel"]
         if canvas and canvas.file_path:
             cmd.append(canvas.file_path)
         try:
@@ -707,17 +707,17 @@ class ImagiPadWindow(Gtk.ApplicationWindow):
             env["PATH"] = os.path.expanduser("~/.local/bin") + ":" + env.get("PATH", "")
             subprocess.Popen(cmd, env=env, start_new_session=True)
         except Exception as e:
-            self._show_error(f"Could not launch PythonPad:\n{e}")
+            self._show_error(f"Could not launch PythonPanel:\n{e}")
 
     def on_about(self):
         dialog = Gtk.AboutDialog(transient_for=self, modal=True)
         dialog.set_program_name(self.APP_NAME)
         dialog.set_version(self.APP_VERSION)
         dialog.set_comments(
-            "Retina Image, Vector, & Video Viewer Companion for PythonPad and DocuPad.\n"
+            "Retina Image, Vector, & Video Viewer Companion for PythonPanel and DocuPanel.\n"
             "Supports SVG, PNG, JPEG, Animated GIF, WebP, BMP, TIFF, ICO, MP4, MKV, WebM, AVI, MOV, and more."
         )
-        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "imagipad.svg")
+        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "imagipanel.svg")
         if os.path.exists(icon_path):
             try:
                 dialog.set_logo(GdkPixbuf.Pixbuf.new_from_file_at_scale(icon_path, 96, 96, True))
@@ -732,7 +732,7 @@ class ImagiPadWindow(Gtk.ApplicationWindow):
             flags=0,
             message_type=Gtk.MessageType.ERROR,
             buttons=Gtk.ButtonsType.OK,
-            text="ImagiPad Error"
+            text="ImagiPanel Error"
         )
         dialog.format_secondary_text(str(msg))
         dialog.run()
@@ -832,28 +832,28 @@ class ImagiPadWindow(Gtk.ApplicationWindow):
         return False
 
 
-class ImagiPadApp(Gtk.Application):
+class ImagiPanelApp(Gtk.Application):
     def __init__(self):
         super().__init__(
-            application_id="org.linuxmint.imagipad",
+            application_id="org.linuxmint.imagipanel",
             flags=Gio.ApplicationFlags.HANDLES_OPEN | Gio.ApplicationFlags.NON_UNIQUE
         )
         self.files_to_open = []
 
     def do_activate(self):
-        win = ImagiPadWindow(self, initial_files=self.files_to_open)
+        win = ImagiPanelWindow(self, initial_files=self.files_to_open)
         win.present()
 
     def do_open(self, files, n_files, hint):
         paths = [f.get_path() for f in files if f.get_path()]
-        win = ImagiPadWindow(self, initial_files=paths)
+        win = ImagiPanelWindow(self, initial_files=paths)
         win.present()
 
 
 def main():
-    GLib.set_prgname("imagipad")
-    GLib.set_application_name("ImagiPad")
-    app = ImagiPadApp()
+    GLib.set_prgname("imagipanel")
+    GLib.set_application_name("ImagiPanel")
+    app = ImagiPanelApp()
     if len(sys.argv) > 1 and not sys.argv[1].startswith("-"):
         app.files_to_open = [os.path.abspath(f) for f in sys.argv[1:]]
     return app.run(sys.argv)

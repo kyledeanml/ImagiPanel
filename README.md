@@ -1,7 +1,7 @@
-# ImagiPad
+# ImagiPanel
 
 <p align="center">
-  <img src="imagipad.svg" alt="ImagiPad Logo" width="160" height="160">
+  <img src="imagipanel.svg" alt="ImagiPanel Logo" width="160" height="160">
 </p>
 
 A fast, modern **Image, Vector, & Video Viewer Companion Application** with **Retina Vision** (HiDPI dynamic scaling from 10% to 800%), **Ctrl + Mouse Wheel Smooth Zooming**, **Native GStreamer Video Playback**, **Animated GIF Playback**, **Crisp SVG Vector Scaling**, **Folder Gallery Navigation**, and a translucent darker-blue open human profile with wispy imagination lines rising from the top skull resting on an unassuming yoga pad. Built natively for **Linux Mint Cinnamon** using Python 3, GTK 3, GStreamer 1.0, Cairo, and GdkPixbuf to replace Pix, Xviewer, and standalone video players.
@@ -29,7 +29,7 @@ A fast, modern **Image, Vector, & Video Viewer Companion Application** with **Re
 - **Unified Folder Browsing (`PageUp` / `PageDown`)**: Step seamlessly through both images and videos in the current directory.
 - **Fullscreen (`F11`) & Slideshow (`F5`)**: View media fullscreen or run an automated 3-second folder slideshow.
 - **Metadata & Properties Sidebar (`I` / `F9`)**: Inspect exact pixel dimensions, video duration, aspect ratio, file size, color channels (RGB/RGBA), bit depth, rotation angle, and modification timestamp.
-- **Companion Integration with PythonPad**: Inspect or edit `.svg` vector XML directly in PythonPad via *Menu -> Inspect SVG Source in PythonPad...*
+- **Companion Integration with PythonPanel**: Inspect or edit `.svg` vector XML directly in PythonPanel via *Menu -> Inspect SVG Source in PythonPanel...*
 
 ---
 
@@ -40,10 +40,10 @@ A fast, modern **Image, Vector, & Video Viewer Companion Application** with **Re
 ```
 
 The installer automatically:
-- Installs `imagipad.svg` and multi-size panel icons (`16x16` through `512x512`) into `~/.local/share/icons/hicolor/`.
-- Installs `~/.local/share/applications/imagipad.desktop` with `StartupWMClass=imagipad`.
-- Creates the CLI executable symlink at `~/.local/bin/imagipad`.
-- Registers ImagiPad via `xdg-mime`, `gio mime`, and `~/.config/mimeapps.list` as the default application for SVG, GIF, JPEG, PNG, WebP, BMP, TIFF, ICO, MP4, MKV, WebM, AVI, MOV, FLV, WMV, and MPEG files in Linux Mint Cinnamon / Nemo.
+- Installs `imagipanel.svg` and multi-size panel icons (`16x16` through `512x512`) into `~/.local/share/icons/hicolor/`.
+- Installs `~/.local/share/applications/imagipanel.desktop` with `StartupWMClass=imagipanel`.
+- Creates the CLI executable symlink at `~/.local/bin/imagipanel`.
+- Registers ImagiPanel via `xdg-mime`, `gio mime`, and `~/.config/mimeapps.list` as the default application for SVG, GIF, JPEG, PNG, WebP, BMP, TIFF, ICO, MP4, MKV, WebM, AVI, MOV, FLV, WMV, and MPEG files in Linux Mint Cinnamon / Nemo.
 
 ---
 

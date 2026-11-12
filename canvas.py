@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-ImagiPad - High-DPI Cairo Image, Vector, & GStreamer Video Canvas Component
+ImagiPanel - High-DPI Cairo Image, Vector, & GStreamer Video Canvas Component
 Provides smooth Retina zooming (10% to 800%), Ctrl + Mouse Wheel zoom,
 click-and-drag panning, animated GIF playback, SVG vector re-rasterization,
 native GStreamer video playback (MP4, MKV, WebM, AVI, MOV, FLV, WMV, MPEG, OGV)
 with timeline scrubbing, volume/mute, loop & playback speed controls,
-and the translucent ImagiPad yoga-pad watermark.
+and the translucent ImagiPanel yoga-pad watermark.
 """
 
 import os
@@ -31,7 +31,7 @@ except Exception:
 class MediaCanvas(Gtk.Box):
     """
     Retina-optimized image, vector, and video canvas widget with:
-    - Translucent ImagiPad watermark (darker-blue open human profile with wispy lines on a yoga pad)
+    - Translucent ImagiPanel watermark (darker-blue open human profile with wispy lines on a yoga pad)
     - Ctrl + Mouse Wheel smooth zooming (10% to 800%)
     - Fit-to-Window & 1:1 Actual Pixels modes
     - Click-and-drag panning
@@ -240,10 +240,10 @@ class MediaCanvas(Gtk.Box):
 
     @classmethod
     def _get_watermark_pixbuf(cls):
-        """Load and cache the official ImagiPad SVG (translucent blue frame & play lens on yoga pad)."""
+        """Load and cache the official ImagiPanel SVG (translucent blue frame & play lens on yoga pad)."""
         if not cls._watermark_loaded:
             cls._watermark_loaded = True
-            svg_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "imagipad.svg")
+            svg_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "imagipanel.svg")
             if os.path.exists(svg_path):
                 try:
                     cls._watermark_pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(
@@ -706,7 +706,7 @@ class MediaCanvas(Gtk.Box):
         cr.set_source_rgb(0.039, 0.055, 0.102)
         cr.paint()
 
-        # Render the translucent ImagiPad watermark in the background
+        # Render the translucent ImagiPanel watermark in the background
         wm = self._get_watermark_pixbuf()
         if wm is not None and w >= 120 and h >= 120:
             wm_w = wm.get_width()

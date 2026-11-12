@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Unit and Integration Tests for ImagiPad
+Unit and Integration Tests for ImagiPanel
 Tests image, vector, and video format detection, metadata inspection, zoom steps,
 GStreamer video integration, and SVG / desktop asset integrity.
 """
@@ -25,7 +25,7 @@ class TestMediaToolsAndCanvas(unittest.TestCase):
 
     def setUp(self):
         self.base_dir = os.path.dirname(os.path.abspath(__file__))
-        self.svg_path = os.path.join(self.base_dir, "imagipad.svg")
+        self.svg_path = os.path.join(self.base_dir, "imagipanel.svg")
 
     def test_supported_image_and_video_extensions(self):
         for ext in (".svg", ".gif", ".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tiff", ".ico"):
@@ -61,12 +61,12 @@ class TestMediaToolsAndCanvas(unittest.TestCase):
         self.assertTrue(HAS_GSTREAMER)
 
     def test_desktop_and_mime_associations(self):
-        desktop_path = os.path.join(self.base_dir, "imagipad.desktop")
+        desktop_path = os.path.join(self.base_dir, "imagipanel.desktop")
         self.assertTrue(os.path.exists(desktop_path))
         with open(desktop_path, "r", encoding="utf-8") as f:
             content = f.read()
-        self.assertIn("Name=ImagiPad", content)
-        self.assertIn("StartupWMClass=imagipad", content)
+        self.assertIn("Name=ImagiPanel", content)
+        self.assertIn("StartupWMClass=imagipanel", content)
         for mime in ("image/svg+xml", "image/gif", "image/jpeg", "image/png", "video/mp4", "video/x-matroska", "video/webm", "video/x-msvideo", "video/quicktime"):
             self.assertIn(mime, content)
 
