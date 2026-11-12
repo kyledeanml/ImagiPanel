@@ -36,6 +36,8 @@ A fast, modern **Image, Vector, & Video Viewer Companion Application** with **Re
 ## Installation
 
 ```bash
+git clone https://github.com/kyledeanml/imagipanel.git
+cd imagipanel
 ./install.sh
 ```
 
@@ -44,6 +46,8 @@ The installer automatically:
 - Installs `~/.local/share/applications/imagipanel.desktop` with `StartupWMClass=imagipanel`.
 - Creates the CLI executable symlink at `~/.local/bin/imagipanel`.
 - Registers ImagiPanel via `xdg-mime`, `gio mime`, and `~/.config/mimeapps.list` as the default application for SVG, GIF, JPEG, PNG, WebP, BMP, TIFF, ICO, MP4, MKV, WebM, AVI, MOV, FLV, WMV, and MPEG files in Linux Mint Cinnamon / Nemo.
+
+You can launch ImagiPanel anytime from the Cinnamon Menu or terminal (`imagipanel /path/to/media`).
 
 ---
 
